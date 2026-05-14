@@ -1,36 +1,61 @@
 {{ define "main" }}
-<!-- Top Leaderboard Ad -->
-<!-- <div class="ad-placeholder ad-leaderboard">
-    <div>
-        <span class="ad-label">Advertisement</span>
-        Google AdSense Leaderboard (728x90)
-    </div>
-</div> -->
 
-{{ partial "tag-filter.html" . }}
+<!-- Hero Section -->
+{{ partial "hero.html" . }}
 
-<div class="content-grid">
-    <main class="blog-feed">
-        
-        {{ $paginator := .Paginator }}
-        {{ range $index, $page := $paginator.Pages }}
-            {{ if and (eq $paginator.PageNumber 1) (eq $index 0) }}
-            <!-- Featured Post (First Item of First Page) -->
-            {{ partial "post-card.html" (dict "page" . "featured" true "class" "span-col-2" "loading" "eager" "priority" "high") }}
-            {{ else if and (eq $paginator.PageNumber 1) (eq $index 5) }}
-            <!-- Secondary Featured Post (6th Item) -->
-            {{ partial "post-card.html" (dict "page" . "featured" true "class" "span-col-2") }}
-            {{ else }}
-            <!-- Standard Post -->
-            {{ partial "post-card.html" (dict "page" .) }}
-            {{ end }}
-        {{ end }}
-        
-        <!-- Pagination -->
-        {{ partial "pagination.html" . }}
-    </main>
-    <div id="persistent-sidebar" data-turbo-permanent>
-        {{ partial "sidebar.html" . }}
+<!-- Main Content Area -->
+<div class="main-wrapper">
+    <div class="container">
+        <div class="content-grid">
+            <!-- Blog Feed with Timeline -->
+            <main class="blog-feed timeline-feed">
+                {{ partial "timeline-posts.html" . }}
+            </main>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar" id="persistent-sidebar" data-turbo-permanent>
+                <!-- Profile Widget -->
+                {{ partial "profile.html" . }}
+                
+                <!-- Search Widget -->
+                <div class="widget search-widget">
+                    <form action="{{ "search/" | absURL }}" method="get" class="search-box">
+                        <input type="text" name="q" placeholder="Search articles..." aria-label="Search">
+                        <button type="submit" aria-label="Search">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Recent Posts Widget -->
+                <div class="widget">
+                    <div class="widget-title">Recent Posts</div>
+                    {{ range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+                        {{ $image := partial "func/GetImage.html" . }}
+                        <div class="widget-recent-post-item {{ if not $image }}no-image{{ end }}">
+                            {{ if $image }}
+                                {{ $thumb := $image.Resize "120x webp" }}
+                                <img src="{{ $thumb.Permalink }}" alt="{{ .Title }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
+                            {{ end }}
+                            <div class="widget-recent-post-content">
+                                <a href="{{ .Permalink }}" class="widget-recent-post-title">{{ .Title }}</a>
+                                <span class="widget-recent-post-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+
+                <!-- Tags Cloud Widget -->
+                <div class="widget">
+                    <div class="widget-title">Explore Topics</div>
+                    <div class="widget-tags">
+                        {{ range first 20 .Site.Taxonomies.tags.ByCount }}
+                        <a href="{{ .Page.Permalink }}" class="tag-pill">{{ .Page.Title }} <span class="tag-count">{{ .Count }}</span></a>
+                        {{ end }}
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
 </div>
 {{ end }}

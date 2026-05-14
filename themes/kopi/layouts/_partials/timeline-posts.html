@@ -1,0 +1,43 @@
+{{ $paginator := .Paginator }}
+<div class="timeline-container">
+    <div class="timeline-line"></div>
+    {{ range $index, $page := $paginator.Pages }}
+    <article class="timeline-item {{ if and (eq $paginator.PageNumber 1) (eq $index 0) }}featured{{ end }}">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">
+            {{ .Date.Format "2006.01.02" }}
+        </div>
+        <div class="timeline-card" onclick="window.location.href='{{ .Permalink }}'">
+            <h2 class="timeline-card-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            {{ if .Summary }}
+            <p class="timeline-card-summary">
+                {{ .Summary | plainify | truncate 150 }}
+            </p>
+            {{ end }}
+            <div class="timeline-card-meta">
+                {{ if .Params.tags }}
+                <span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                    </svg>
+                    {{ range first 3 .Params.tags }}{{ . }}{{ end }}
+                </span>
+                {{ end }}
+                <span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    {{ .ReadingTime }} min read
+                </span>
+            </div>
+        </div>
+    </article>
+    {{ end }}
+</div>
+
+<!-- Pagination -->
+{{ partial "pagination.html" . }}
