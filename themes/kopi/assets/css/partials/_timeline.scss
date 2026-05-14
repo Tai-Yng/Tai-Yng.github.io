@@ -1,6 +1,5 @@
 /* --- Timeline Layout for Blog Posts --- */
 
-/* Timeline Container */
 .timeline-container {
     position: relative;
     padding-left: 2rem;
@@ -21,7 +20,6 @@
     border-radius: 1px;
 }
 
-/* Timeline Group - groups posts by date */
 .timeline-group {
     position: relative;
     padding-bottom: 2.5rem;
@@ -31,7 +29,6 @@
     padding-bottom: 0;
 }
 
-/* Timeline Dot - positioned on the line */
 .timeline-group .timeline-dot {
     position: absolute;
     left: -2rem;
@@ -60,38 +57,17 @@
     font-weight: 500;
 }
 
-/* Cards grid within timeline group */
 .timeline-cards-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 }
 
-@media (min-width: 768px) {
-    .timeline-cards-grid {
-        gap: 1.5rem;
-    }
-}
-
-/* Individual post items */
 .timeline-item {
     position: relative;
 }
 
-/* Featured item - spans full width */
-.timeline-item.featured-item {
-    grid-column: span 1;
-}
-
-@media (min-width: 768px) {
-    .timeline-item.featured-item {
-        grid-column: span 2;
-    }
-}
-
-/* =========================
-   Featured Group Styling
-   ========================= */
+/* Featured group styling */
 .timeline-group.featured .timeline-dot {
     background-color: var(--accent);
     width: 14px;
@@ -109,7 +85,6 @@
     font-weight: 600;
 }
 
-/* Desktop adjustments */
 @media (min-width: 768px) {
     .timeline-container {
         padding-left: 2.5rem;
@@ -139,24 +114,19 @@
     .timeline-date {
         font-size: 0.9rem;
     }
+    
+    .timeline-cards-grid {
+        gap: 1.5rem;
+    }
 }
 
 /* Animation */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.timeline-group {
-    animation: fadeInUp 0.5s ease forwards;
-}
-
+.timeline-group { animation: fadeInUp 0.5s ease forwards; }
 .timeline-group:nth-child(2) { animation-delay: 0.1s; }
 .timeline-group:nth-child(3) { animation-delay: 0.2s; }
 .timeline-group:nth-child(4) { animation-delay: 0.3s; }

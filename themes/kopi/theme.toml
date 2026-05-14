@@ -1,0 +1,24 @@
+name = "kopi"
+license = "MIT"
+licenselink = "https://github.com/bect/kopi/blob/main/LICENSE"
+description = "Kopi is a high-performance Hugo theme featuring a sophisticated dark-mode aesthetic and a structured 2-column layout. Built for speed and seamless navigation, it utilizes Turbo for instant page transitions."
+
+# The home page of the theme, where the source can be found.
+homepage = "https://github.com/bect/kopi"
+
+# If you have a running demo of the theme.
+demosite = "https://bect.github.io/kopi/"
+
+tags = ["blog", "personal", "magazine", "responsive", "clean"]
+features = ["dark mode", "turbo navigation", "mermaid diagrams", "2-column layout", "syntax highlighting", "radio player"]
+
+# If the theme has a single author
+[author]
+    name = "bect"
+    homepage = "https://github.com/bect"
+
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.157.0"

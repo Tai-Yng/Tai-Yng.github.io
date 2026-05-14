@@ -7,7 +7,6 @@ import { initBookmark } from './modules/bookmark.js';
 import { initPWA } from './modules/pwa.js';
 import { initPrefetch } from './modules/prefetch.js';
 import { initPalette } from './modules/palette.js';
-import { initReadingProgress } from './modules/progress.js';
 import './external/turbo.es2017-umd.js';
 import * as params from '@params';
 
@@ -21,5 +20,4 @@ document.addEventListener('turbo:load', () => {
     initPWA(params.swPath, params.swScope);
     initPrefetch();
     initPalette();
-    initReadingProgress();
 });

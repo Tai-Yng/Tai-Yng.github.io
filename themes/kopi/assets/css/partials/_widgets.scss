@@ -1,12 +1,5 @@
 /* --- Widgets --- */
 
-.widget {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-container);
-    padding: 1.5rem;
-}
-
 .widget-title {
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -36,53 +29,20 @@
     font-weight: 400;
 }
 
-/* Search Widget */
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
 .search-box input {
     width: 100%;
-    padding: 10px 40px 10px 14px;
+    padding: 10px 12px;
     border: 1px solid var(--border);
     border-radius: var(--radius-element);
     background: transparent;
     color: var(--text-main);
     font-family: inherit;
     font-size: 16px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .search-box input:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
-}
-
-.search-box input::placeholder {
-    color: var(--text-muted);
-}
-
-.search-box button {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.2s ease;
-}
-
-.search-box button:hover {
-    color: var(--accent);
+    outline: 2px solid var(--accent);
+    border-color: transparent;
 }
 
 /* Ad Placeholders */
@@ -264,45 +224,6 @@
 .tag-pill:hover .tag-count {
     background-color: var(--accent);
     color: #ffffff;
-}
-
-/* Subscribe Widget */
-.subscribe-widget {
-    text-align: center;
-}
-
-.subscribe-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.subscribe-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--text-main);
-    background-color: transparent;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-element);
-    transition: all 0.2s ease;
-    cursor: pointer;
-}
-
-.subscribe-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background-color: rgba(37, 99, 235, 0.05);
-}
-
-.subscribe-btn svg {
-    flex-shrink: 0;
 }
 
 /* Social Links */

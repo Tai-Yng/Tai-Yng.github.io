@@ -15,78 +15,6 @@
     background-color: rgba(9, 9, 11, 0.95);
 }
 
-/* Header on top of hero - transparent style */
-.site-header.header-transparent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    border-bottom: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-}
-
-.site-header.header-transparent .logo {
-    color: #ffffff;
-}
-
-.site-header.header-transparent .logo::before {
-    background-color: #ffffff;
-}
-
-.site-header.header-transparent .nav-links a {
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.site-header.header-transparent .nav-links a:hover {
-    color: #ffffff;
-}
-
-.site-header.header-transparent .menu-toggle {
-    color: #ffffff;
-}
-
-.site-header.header-transparent .theme-toggle {
-    color: #ffffff;
-}
-
-/* Scrolled state - solid background */
-.site-header.header-scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.site-header.header-scrolled .logo {
-    color: var(--text-main);
-}
-
-.site-header.header-scrolled .logo::before {
-    background-color: var(--text-main);
-}
-
-.site-header.header-scrolled .nav-links a {
-    color: var(--text-muted);
-}
-
-.site-header.header-scrolled .nav-links a:hover {
-    color: var(--text-main);
-}
-
-.site-header.header-scrolled .menu-toggle {
-    color: var(--text-main);
-}
-
-.site-header.header-scrolled .theme-toggle {
-    color: var(--text-main);
-}
-
-[data-theme="dark"] .site-header.header-scrolled {
-    background-color: rgba(9, 9, 11, 0.95);
-}
-
 .header-inner {
     display: flex;
     align-items: center;
@@ -108,7 +36,6 @@
     letter-spacing: -0.02em;
     z-index: 101;
     text-transform: uppercase;
-    transition: color 0.3s ease;
 }
 
 .logo::before {
@@ -118,7 +45,6 @@
     height: 16px;
     background-color: var(--text-main);
     border-radius: 2px;
-    transition: background-color 0.3s ease;
 }
 
 .logo:hover::before {
@@ -137,7 +63,6 @@
     padding: 0.5rem;
     margin-left: -0.5rem;
     z-index: 102;
-    transition: color 0.3s ease;
 }
 
 .nav-links {
@@ -233,7 +158,7 @@
     .dropdown-menu li a:hover { background-color: var(--bg-body); color: var(--accent); padding-left: 1.5rem; }
 }
 
-/* --- Palette Toggle & Panel --- */
+/* --- Action Buttons (Theme Toggle, Palette) --- */
 .theme-toggle,
 .palette-toggle {
     background: none;
@@ -256,20 +181,6 @@
 [data-theme="dark"] .theme-toggle:hover,
 [data-theme="dark"] .palette-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
-}
-
-.site-header.header-transparent .theme-toggle,
-.site-header.header-transparent .palette-toggle {
-    color: #ffffff;
-}
-
-.site-header.header-transparent .theme-toggle:hover,
-.site-header.header-transparent .palette-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.header-inner {
-    gap: 0.5rem;
 }
 
 /* Palette Panel */
@@ -396,7 +307,6 @@
     border-radius: 6px;
 }
 
-/* Mobile adjustments */
 @media (max-width: 900px) {
     .palette-panel {
         right: auto;

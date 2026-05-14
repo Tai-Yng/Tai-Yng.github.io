@@ -1,9 +1,7 @@
 {{ define "main" }}
 
-<!-- Timeline Container with Date Groups -->
 <div class="content-grid">
     <main class="blog-feed timeline-feed">
-        <!-- Timeline Container -->
         <div class="timeline-container">
             <div class="timeline-line"></div>
             
@@ -13,31 +11,19 @@
             {{ range $i, $group := $grouped }}
             <div class="timeline-group{{ if and (eq $paginator.PageNumber 1) (eq $i 0) }} featured{{ end }}">
                 <div class="timeline-dot"></div>
-                <div class="timeline-date">
-                    {{ $group.Key }}
-                </div>
+                <div class="timeline-date">{{ $group.Key }}</div>
                 
-                <!-- Post Cards Grid -->
                 <div class="timeline-cards-grid">
-                    {{ range $j, $page := $group.Pages }}
-                    {{ if and (eq $paginator.PageNumber 1) (eq $i 0) (eq $j 0) }}
-                    <!-- First post: Featured large card -->
-                    <div class="timeline-item featured-item">
-                        {{ partial "post-card.html" (dict "page" $page "featured" true "loading" "eager" "priority" "high") }}
-                    </div>
-                    {{ else }}
-                    <!-- Other posts: Normal card -->
+                    {{ range $group.Pages }}
                     <div class="timeline-item">
-                        {{ partial "post-card.html" (dict "page" $page) }}
+                        {{ partial "post-card.html" (dict "page" .) }}
                     </div>
-                    {{ end }}
                     {{ end }}
                 </div>
             </div>
             {{ end }}
         </div>
 
-        <!-- Pagination -->
         {{ partial "pagination.html" . }}
     </main>
     

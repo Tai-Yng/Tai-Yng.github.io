@@ -4,7 +4,6 @@
 {{ $image := partial "func/GetImage.html" $page }}
 {{ $loading := .loading | default "lazy" }}
 {{ $priority := .priority | default "auto" }}
-{{ $wrapper := .wrapper | default true }}
 
 {{/* Dynamic Summary Length based on Title Length */}}
 {{ $titleLen := len $page.Title }}
@@ -15,11 +14,7 @@
     {{ $textOnlyLen = 260 }}
 {{ end }}
 
-{{ if $wrapper }}
 <article class="post-card {{ if not $image }}text-only{{ end }} {{ $class }}">
-{{ else }}
-<div class="post-card {{ if not $image }}text-only{{ end }} {{ $class }}">
-{{ end }}
     {{ if $image }}
         {{ if eq $image.MediaType.SubType "svg" }}
             <img src="{{ $image.Permalink }}" class="post-image" alt="{{ $page.Title }}" loading="{{ $loading }}" fetchpriority="{{ $priority }}" decoding="async" width="{{ $image.Width }}" height="{{ $image.Height }}">
@@ -45,13 +40,7 @@
         {{ end }}
     {{ end }}
     <div class="post-content">
-        <div class="post-meta" {{ if $featured }}style="color: var(--accent);"{{ end }}>
-            {{ $page.Date.Format "Jan 02, 2006" }} • 
-            <span class="post-view-counter">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                <span data-busuanzi-value="page_pv">-</span>
-            </span>
-        </div>
+        <div class="post-meta" {{ if $featured }}style="color: var(--accent);"{{ end }}>{{ $page.Date.Format "Jan 02, 2006" }}</div>
         <h2 class="post-title" {{ if $featured }}style="font-size: 2.5rem; letter-spacing: -0.03em;"{{ end }}><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></h2>
         {{ if not $image }}
         <p class="post-excerpt" {{ if $featured }}style="font-size: 1.2rem; line-height: 1.6;"{{ end }}>
@@ -78,8 +67,4 @@
             </div>
         </div>
     </div>
-{{ if $wrapper }}
 </article>
-{{ else }}
-</div>
-{{ end }}
