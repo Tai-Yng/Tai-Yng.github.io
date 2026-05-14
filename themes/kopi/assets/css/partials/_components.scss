@@ -301,3 +301,74 @@
 [data-theme="dark"] .article-body blockquote {
     background-color: rgba(255, 255, 255, 0.03);
 }
+
+/* =========================
+   Playground Effects
+   ========================= */
+
+/* Ink Ripple */
+.ripple-effect {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.4;
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 9999;
+    transition: none;
+}
+
+.ripple-effect.active {
+    animation: rippleAnim 0.8s ease-out forwards;
+}
+
+@keyframes rippleAnim {
+    0% { transform: scale(0); opacity: 0.4; }
+    100% { transform: scale(4); opacity: 0; }
+}
+
+/* Mouse Trail */
+.trail-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    font-size: 12px;
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+    transition: none;
+}
+
+.trail-dot.active {
+    animation: trailAnim 1.2s ease-out forwards;
+}
+
+@keyframes trailAnim {
+    0% { opacity: 0.6; transform: translateY(0) scale(1); }
+    50% { opacity: 0.3; transform: translateY(-10px) scale(0.8); }
+    100% { opacity: 0; transform: translateY(-20px) scale(0.4); }
+}
+
+/* Konami Easter Egg */
+.konami-char {
+    position: fixed;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 9997;
+    opacity: 0;
+    transition: none;
+}
+
+.konami-char.active {
+    animation: konamiFall 5s ease-in forwards;
+}
+
+@keyframes konamiFall {
+    0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+    10% { opacity: 1; transform: translateY(20px) rotate(5deg); }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; transform: translateY(400px) rotate(-10deg); }
+}
