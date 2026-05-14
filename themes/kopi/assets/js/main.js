@@ -6,6 +6,7 @@ import { initSearch } from './modules/search.js';
 import { initPWA } from './modules/pwa.js';
 import { initPrefetch } from './modules/prefetch.js';
 import { initPalette } from './modules/palette.js';
+import { initAchievements } from './modules/achievements.js';
 import './external/turbo.es2017-umd.js';
 import * as params from '@params';
 
@@ -18,4 +19,5 @@ document.addEventListener('turbo:load', () => {
     initPWA(params.swPath, params.swScope);
     initPrefetch();
     initPalette();
+    initAchievements();
 });

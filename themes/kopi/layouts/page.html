@@ -2,7 +2,7 @@
 <!-- Breadcrumb Navigation -->
 {{ partial "breadcrumb.html" . }}
 
-<div class="content-grid">
+<div class="content-grid" {{ if .Params.tags }}data-page-tags="{{ delimit .Params.tags "," }}"{{ end }}>
     
     <main>
         <article>

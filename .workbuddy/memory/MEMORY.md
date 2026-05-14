@@ -37,3 +37,10 @@ git add -A && git commit -m "update" && git push origin main  # 推送到 GitHub
   git config --global http.proxy http://127.0.0.1:7890
   ```
 - 上传指南文档：`D:\Bolg\taiyang\文章上传指南.md`
+
+## 阅读成就系统
+- 侧边栏成就小部件，locationStorage 存储
+- 15 个成就：阅读数量、标签浏览、时段（夜读/晨读/深夜）、连续访问天数
+- 解锁时弹出 Toast 通知
+- JS: `themes/kopi/assets/js/modules/achievements.js`
+- 样式: `_widgets.scss` / `_components.scss`
