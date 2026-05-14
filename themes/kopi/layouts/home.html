@@ -1,24 +1,25 @@
 {{ define "main" }}
 
-<!-- Hero Section -->
+<!-- Hero Section - Full Screen -->
 {{ partial "hero.html" . }}
 
 <!-- Main Content Area -->
-<div class="main-wrapper">
+<div class="main-wrapper" id="content">
     <div class="container">
         <div class="content-grid">
             <!-- Blog Feed with Timeline -->
             <main class="blog-feed timeline-feed">
                 {{ partial "timeline-posts.html" . }}
             </main>
-            
+
             <!-- Sidebar -->
             <aside class="sidebar" id="persistent-sidebar" data-turbo-permanent>
                 <!-- Profile Widget -->
                 {{ partial "profile.html" . }}
-                
+
                 <!-- Search Widget -->
                 <div class="widget search-widget">
+                    <div class="widget-title">Search</div>
                     <form action="{{ "search/" | absURL }}" method="get" class="search-box">
                         <input type="text" name="q" placeholder="Search articles..." aria-label="Search">
                         <button type="submit" aria-label="Search">
@@ -53,6 +54,20 @@
                         <a href="{{ .Page.Permalink }}" class="tag-pill">{{ .Page.Title }} <span class="tag-count">{{ .Count }}</span></a>
                         {{ end }}
                     </div>
+                </div>
+
+                <!-- Subscribe Widget -->
+                <div class="widget subscribe-widget">
+                    <div class="widget-title">Subscribe</div>
+                    <p class="subscribe-desc">Get the latest updates delivered directly to your inbox.</p>
+                    <a href="{{ "/index.xml" | absURL }}" class="subscribe-btn" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 11a9 9 0 0 1 9 9"></path>
+                            <path d="M4 4a16 16 0 0 1 16 16"></path>
+                            <circle cx="5" cy="19" r="1"></circle>
+                        </svg>
+                        Join Newsletter
+                    </a>
                 </div>
             </aside>
         </div>

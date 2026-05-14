@@ -1,10 +1,9 @@
-/* --- Hero Section --- */
+/* --- Hero Section - Full Screen --- */
 .hero-section {
     position: relative;
     width: 100%;
-    height: 70vh;
-    min-height: 400px;
-    max-height: 600px;
+    height: 100vh;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,6 +22,10 @@
     background-position: center;
     opacity: 0.7;
     transition: transform 0.5s ease;
+}
+
+.hero-section:hover .hero-bg {
+    transform: scale(1.02);
 }
 
 .hero-overlay {
@@ -88,12 +91,22 @@
     font-size: 0.8rem;
     letter-spacing: 0.1em;
     animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.hero-scroll:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .hero-scroll svg {
     width: 24px;
     height: 24px;
     stroke: rgba(255, 255, 255, 0.5);
+}
+
+.hero-scroll:hover svg {
+    stroke: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes bounce {
@@ -105,14 +118,14 @@
 /* Desktop */
 @media (min-width: 768px) {
     .hero-section {
-        height: 80vh;
-        min-height: 500px;
+        height: 100vh;
+        min-height: 600px;
     }
-    
+
     .hero-title {
         font-size: 3.5rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.3rem;
     }
