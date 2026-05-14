@@ -1,0 +1,76 @@
+baseURL: "https://tai-yng.github.io/"
+languageCode: "zh-cn"
+title: "太阳的博客"
+theme: "kopi"
+paginate: 10
+enableRobotsTXT: true
+
+mediaTypes:
+  application/radio+json:
+    suffixes:
+      - json
+
+outputFormats:
+  RADIO:
+    mediaType: application/radio+json
+    baseName: radio
+    isPlainText: true
+    notAlternative: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+    - RADIO
+
+params:
+  description: "记录生活、技术与思考，分享那些值得被看见的瞬间。"
+  author:
+    name: "Tai-Yng"
+    bio: "记录生活、技术与思考，分享那些值得被看见的瞬间。"
+    role: "博主"
+    link: "/about"
+
+  # Kopi 特色配置
+  showHero: true
+  heroSubtitle: "生活不止眼前的苟且，还有诗和远方"
+
+  # 社交链接
+  social:
+    github: "Tai-Yng"
+    rss: "/index.xml"
+
+  # 代码高亮
+  code:
+    copyButton: true
+
+  # 暗色模式
+  colorScheme: "auto"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    codeFences: true
+    lineNos: true
+
+menus:
+  main:
+    - name: 首页
+      pageRef: "/"
+      weight: 10
+    - name: 文章
+      pageRef: "/posts"
+      weight: 20
+    - name: 标签
+      pageRef: "/tags"
+      weight: 30
+    - name: 分类
+      pageRef: "/categories"
+      weight: 40
+    - name: 关于
+      pageRef: "/about"
+      weight: 50
