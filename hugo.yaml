@@ -46,7 +46,7 @@ params:
 
   # 代码高亮
   code:
-    copyButton: true
+    copyButton: false
 
   # 暗色模式
   colorScheme: "auto"

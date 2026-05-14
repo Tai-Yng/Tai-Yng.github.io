@@ -142,7 +142,7 @@ export function initInteractions() {
         });
     }
 
-    // Code Block Expansion
+    // Legacy code block expansion (kept for backward compatibility)
     document.querySelectorAll('.code-block-wrapper').forEach(wrapper => {
         const pre = wrapper.querySelector('pre');
         if (pre && pre.scrollHeight > 350) {

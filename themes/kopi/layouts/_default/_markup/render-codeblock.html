@@ -1,0 +1,9 @@
+<figure class="code-block-fig">
+    <figcaption class="code-block-caption">
+        <span class="code-lang-indicator"></span>
+        <span class="code-lang-name">{{ .Type }}</span>
+    </figcaption>
+    {{- with transform.HighlightCodeBlock . -}}
+        {{ .Wrapped }}
+    {{- end -}}
+</figure>
