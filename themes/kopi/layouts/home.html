@@ -2,6 +2,16 @@
 
 <div class="content-grid">
     <main class="blog-feed timeline-feed">
+        <!-- Hero Banner (same image as welcome screen) -->
+        <div class="hero-banner" id="heroBanner">
+            <div class="hero-banner-bg" style="background-image: url('{{ "images/hero-bg.jpg" | absURL }}');"></div>
+            <div class="hero-banner-overlay"></div>
+            <div class="hero-banner-content">
+                <h1 class="hero-banner-title">{{ .Site.Params.heroTitle | default "「 湖心亭看雪 」" }}</h1>
+                <p class="hero-banner-subtitle">{{ .Site.Params.heroSubtitle | default "天与云与山与水，上下一白" }}</p>
+            </div>
+        </div>
+
         <div class="timeline-container">
             <div class="timeline-line"></div>
             

@@ -42,6 +42,11 @@
     }
 }
 
+/* Timeline feed - always single column */
+.timeline-feed {
+    grid-template-columns: 1fr !important;
+}
+
 /* Helper: Full Width */
 .span-col-2 {
     grid-column: span 1;

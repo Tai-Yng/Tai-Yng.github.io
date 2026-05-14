@@ -29,6 +29,14 @@
         function enterSite() {
             welcome.classList.add('hidden');
             sessionStorage.setItem('hasSeenWelcome', 'true');
+            // Scroll past the banner to the timeline
+            const banner = document.getElementById('heroBanner');
+            if (banner) {
+                setTimeout(() => {
+                    const bannerHeight = banner.offsetHeight;
+                    window.scrollTo({ top: bannerHeight + 10, behavior: 'smooth' });
+                }, 400);
+            }
         }
         
         const welcomeEnter = document.getElementById('welcomeEnter');

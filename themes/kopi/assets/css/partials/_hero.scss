@@ -269,3 +269,83 @@
         font-size: 1.3rem;
     }
 }
+
+/* =========================
+   Hero Banner (on homepage, above timeline)
+   ========================= */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-container);
+    margin-bottom: 2rem;
+    background-color: #0a0a0f;
+}
+
+.hero-banner-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.65;
+    transition: transform 0.5s ease;
+}
+
+.hero-banner:hover .hero-banner-bg {
+    transform: scale(1.03);
+}
+
+.hero-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 15, 0.2) 0%,
+        rgba(10, 10, 15, 0.6) 100%
+    );
+}
+
+.hero-banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-banner-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+}
+
+.hero-banner-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.08em;
+}
+
+@media (min-width: 768px) {
+    .hero-banner {
+        height: 45vh;
+        min-height: 350px;
+    }
+    
+    .hero-banner-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-banner-subtitle {
+        font-size: 1.2rem;
+    }
+}
