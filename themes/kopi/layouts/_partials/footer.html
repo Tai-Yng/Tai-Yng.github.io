@@ -21,6 +21,10 @@
                 <span class="footer-subtitle">{{ . }}</span>
             {{ end }}
             <p>&copy; {{ now.Year }} {{ .Site.Title }}</p>
+            <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">
+                本站总访客 <span id="busuanzi_value_site_uv">-</span> · 
+                总访问量 <span id="busuanzi_value_site_pv">-</span>
+            </p>
         </div>
         <div style="display:flex; gap: 1.5rem;">
             <a href="#">Twitter</a>

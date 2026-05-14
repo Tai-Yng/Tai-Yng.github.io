@@ -86,7 +86,6 @@
 .timeline-item .post-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    border-color: var(--accent-muted);
 }
 
 .timeline-item .post-card .post-image {
@@ -138,7 +137,21 @@
 
 .timeline-item .post-card .post-actions {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
+}
+
+/* View counter in post cards */
+.post-view-counter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.post-view-counter svg {
+    opacity: 0.6;
 }
 
 /* Text-only card */
