@@ -91,17 +91,17 @@
 
 .timeline-item .post-card .post-image {
     width: 100%;
-    height: 220px;
+    height: 140px;
     object-fit: cover;
     border-radius: 0;
 }
 
 .timeline-item .post-card .post-content {
-    padding: 0 1.25rem 1.25rem;
+    padding: 0 1rem 1rem;
 }
 
 .timeline-item .post-card .post-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
     color: var(--text-main);
@@ -110,10 +110,14 @@
 }
 
 .timeline-item .post-card .post-excerpt {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
 }
 
 .timeline-item .post-card .post-meta {
@@ -172,11 +176,11 @@
 }
 
 .timeline-group.featured .timeline-item:first-child .post-card .post-image {
-    height: 280px;
+    height: 200px;
 }
 
 .timeline-group.featured .timeline-item:first-child .post-card .post-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 /* Desktop adjustments */
@@ -215,15 +219,15 @@
     }
     
     .timeline-item .post-card .post-image {
-        height: 260px;
+        height: 180px;
     }
     
     .timeline-group.featured .timeline-item:first-child .post-card .post-image {
-        height: 350px;
+        height: 260px;
     }
     
     .timeline-group.featured .timeline-item:first-child .post-card .post-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 }
 

@@ -5,14 +5,9 @@
 {{ $loading := .loading | default "lazy" }}
 {{ $priority := .priority | default "auto" }}
 
-{{/* Dynamic Summary Length based on Title Length */}}
-{{ $titleLen := len $page.Title }}
-{{ $textOnlyLen := 300 }}
-{{ if gt $titleLen 70 }}
-    {{ $textOnlyLen = 220 }}
-{{ else if gt $titleLen 35 }}
-    {{ $textOnlyLen = 260 }}
-{{ end }}
+{{/* Short summary - keep cards slim */}}
+{{ $excerptLen := 80 }}
+{{ if $featured }}{{ $excerptLen = 100 }}{{ end }}
 
 <article class="post-card {{ if not $image }}text-only{{ end }} {{ $class }}">
     {{ if $image }}
@@ -40,13 +35,11 @@
         {{ end }}
     {{ end }}
     <div class="post-content">
-        <div class="post-meta" {{ if $featured }}style="color: var(--accent);"{{ end }}>{{ $page.Date.Format "Jan 02, 2006" }}</div>
-        <h2 class="post-title" {{ if $featured }}style="font-size: 2.5rem; letter-spacing: -0.03em;"{{ end }}><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></h2>
-        {{ if not $image }}
-        <p class="post-excerpt" {{ if $featured }}style="font-size: 1.2rem; line-height: 1.6;"{{ end }}>
-            {{ $page.Content | plainify | truncate $textOnlyLen }}
+        <div class="post-meta">{{ $page.Date.Format "Jan 02, 2006" }}</div>
+        <h2 class="post-title" {{ if $featured }}style="font-size: 1.75rem; letter-spacing: -0.03em;"{{ end }}><a href="{{ $page.Permalink }}">{{ $page.Title }}</a></h2>
+        <p class="post-excerpt">
+            {{ $page.Summary | plainify | truncate $excerptLen }}
         </p>
-        {{ end }}
         <div class="post-footer" {{ if $featured }}style="margin-top: 1.5rem; width: 100%;"{{ end }}>
             <a href="{{ $page.Permalink }}" class="btn" style="border:none; padding-left:0; color:{{ if $featured }}var(--text-main){{ else }}var(--accent){{ end }};{{ if $featured }} font-weight: 700;{{ end }}">
                 {{ if $featured }}Read Full Story →{{ else }}Read Article →{{ end }}
