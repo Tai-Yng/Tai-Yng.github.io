@@ -28,8 +28,36 @@
             </ul>
         </nav>
 
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="background:none; border:none; cursor:pointer; color:var(--text-main); padding: 5px;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle Theme">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
+        
+        <button class="palette-toggle" id="paletteToggle" aria-label="Color Palette" title="Change Accent Color">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"></path>
+                <path d="M12 16a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"></path>
+                <path d="M2 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"></path>
+                <path d="M16 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"></path>
+            </svg>
+        </button>
+        
+        <!-- Color Palette Panel -->
+        <div class="palette-panel" id="palettePanel">
+            <div class="palette-header">
+                <span>Accent Color</span>
+                <button class="palette-reset" id="paletteReset" title="Reset to default">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+                </button>
+            </div>
+            <div class="palette-colors" id="paletteColors">
+                <!-- Colors will be injected by JS -->
+            </div>
+            <div class="palette-custom">
+                <label for="customColorInput">Custom</label>
+                <input type="color" id="customColorInput" value="#2563eb">
+            </div>
+        </div>
     </div>
 </header>

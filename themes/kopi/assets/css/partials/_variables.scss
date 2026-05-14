@@ -1,12 +1,14 @@
 /* --- CSS Variables --- */
 :root {
-    /* Modern Minimalist Palette */
+    /* Monochrome Palette - Literary Minimalist */
     --bg-body: #ffffff;
     --bg-card: #ffffff;
     --bg-nav: #ffffff;
     --text-main: #18181b; /* Zinc-900 */
     --text-muted: #71717a; /* Zinc-500 */
-    --accent: #2563eb; /* Modern Blue */
+    --accent: #18181b; /* Black - Strong contrast */
+    --accent-light: #3f3f46; /* Zinc-700 */
+    --accent-muted: #52525b; /* Zinc-600 */
     --border: #e4e4e7; /* Zinc-200 */
     
     /* Spacing - Mobile First Defaults */
@@ -19,7 +21,7 @@
     --radius-element: 8px;
     
     /* Layout */
-    --max-width: 1200px;
+    --max-width: 1400px;
     --header-height: 65px;
 }
 
@@ -44,6 +46,8 @@ $breakpoint-md: 768px;
     --bg-nav: #09090b;
     --text-main: #f4f4f5; /* Zinc-100 */
     --text-muted: #a1a1aa; /* Zinc-400 */
-    --accent: #60a5fa; /* Lighter Blue */
+    --accent: #f4f4f5; /* Off-white for dark mode */
+    --accent-light: #e4e4e7; /* Zinc-200 */
+    --accent-muted: #a1a1aa; /* Zinc-400 */
     --border: #27272a; /* Zinc-800 */
 }

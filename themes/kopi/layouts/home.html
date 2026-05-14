@@ -1,15 +1,42 @@
 {{ define "main" }}
 
-<!-- Hero Section - Full Screen -->
-{{ partial "hero.html" . }}
-
 <!-- Main Content Area -->
-<div class="main-wrapper" id="content">
-    <div class="container">
-        <div class="content-grid">
+<div class="content-grid">
             <!-- Blog Feed with Timeline -->
             <main class="blog-feed timeline-feed">
-                {{ partial "timeline-posts.html" . }}
+                <!-- Timeline Section Title -->
+                <div class="timeline-section-header">
+                    <h2 class="timeline-section-title">近期随笔</h2>
+                </div>
+
+                <!-- Timeline Container -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    {{ $paginator := .Paginator }}
+                    {{ $grouped := $paginator.Pages.GroupByDate "2006.01.02" }}
+                    
+                    {{ range $i, $group := $grouped }}
+                    <div class="timeline-group{{ if and (eq $paginator.PageNumber 1) (eq $i 0) }} featured{{ end }}">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            {{ $group.Key }}
+                        </div>
+                        
+                        <!-- Post Cards Grid -->
+                        <div class="timeline-cards-grid">
+                            {{ range $group.Pages }}
+                            <div class="timeline-item">
+                                {{ partial "post-card.html" (dict "page" . "wrapper" false) }}
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <!-- Pagination -->
+                {{ partial "pagination.html" . }}
             </main>
 
             <!-- Sidebar -->
@@ -70,7 +97,5 @@
                     </a>
                 </div>
             </aside>
-        </div>
-    </div>
 </div>
 {{ end }}

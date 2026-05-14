@@ -95,6 +95,24 @@ document.addEventListener('click', (e) => {
 });
 
 export function initInteractions() {
+    // Header transparency on hero
+    const header = document.querySelector('.site-header');
+    const hero = document.getElementById('hero');
+    if (header && hero) {
+        const updateHeader = () => {
+            const heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom > 0) {
+                header.classList.add('header-transparent');
+                header.classList.remove('header-scrolled');
+            } else {
+                header.classList.remove('header-transparent');
+                header.classList.add('header-scrolled');
+            }
+        };
+        window.addEventListener('scroll', updateHeader, { passive: true });
+        updateHeader();
+    }
+
     // Back to Top
     const backToTopBtn = document.getElementById('backToTop');
     if(backToTopBtn) {
