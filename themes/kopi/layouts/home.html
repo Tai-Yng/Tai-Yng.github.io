@@ -1,96 +1,48 @@
 {{ define "main" }}
 
-<!-- Main Content Area -->
+<!-- Timeline Container with Date Groups -->
 <div class="content-grid">
-            <!-- Blog Feed with Timeline -->
-            <main class="blog-feed timeline-feed">
-                <!-- Timeline Container -->
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    
-                    {{ $paginator := .Paginator }}
-                    {{ $grouped := $paginator.Pages.GroupByDate "2006.01.02" }}
-                    
-                    {{ range $i, $group := $grouped }}
-                    <div class="timeline-group{{ if and (eq $paginator.PageNumber 1) (eq $i 0) }} featured{{ end }}">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">
-                            {{ $group.Key }}
-                        </div>
-                        
-                        <!-- Post Cards Grid -->
-                        <div class="timeline-cards-grid">
-                            {{ range $group.Pages }}
-                            <div class="timeline-item">
-                                {{ partial "post-card.html" (dict "page" . "wrapper" false) }}
-                            </div>
-                            {{ end }}
-                        </div>
+    <main class="blog-feed timeline-feed">
+        <!-- Timeline Container -->
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            {{ $paginator := .Paginator }}
+            {{ $grouped := $paginator.Pages.GroupByDate "2006.01.02" }}
+            
+            {{ range $i, $group := $grouped }}
+            <div class="timeline-group{{ if and (eq $paginator.PageNumber 1) (eq $i 0) }} featured{{ end }}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">
+                    {{ $group.Key }}
+                </div>
+                
+                <!-- Post Cards Grid -->
+                <div class="timeline-cards-grid">
+                    {{ range $j, $page := $group.Pages }}
+                    {{ if and (eq $paginator.PageNumber 1) (eq $i 0) (eq $j 0) }}
+                    <!-- First post: Featured large card -->
+                    <div class="timeline-item featured-item">
+                        {{ partial "post-card.html" (dict "page" $page "featured" true "loading" "eager" "priority" "high") }}
+                    </div>
+                    {{ else }}
+                    <!-- Other posts: Normal card -->
+                    <div class="timeline-item">
+                        {{ partial "post-card.html" (dict "page" $page) }}
                     </div>
                     {{ end }}
-                </div>
-
-                <!-- Pagination -->
-                {{ partial "pagination.html" . }}
-            </main>
-
-            <!-- Sidebar -->
-            <aside class="sidebar" id="persistent-sidebar" data-turbo-permanent>
-                <!-- Profile Widget -->
-                {{ partial "profile.html" . }}
-
-                <!-- Search Widget -->
-                <div class="widget search-widget">
-                    <div class="widget-title">Search</div>
-                    <form action="{{ "search/" | absURL }}" method="get" class="search-box">
-                        <input type="text" name="q" placeholder="Search articles..." aria-label="Search">
-                        <button type="submit" aria-label="Search">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- Recent Posts Widget -->
-                <div class="widget">
-                    <div class="widget-title">Recent Posts</div>
-                    {{ range first 5 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
-                        {{ $image := partial "func/GetImage.html" . }}
-                        <div class="widget-recent-post-item {{ if not $image }}no-image{{ end }}">
-                            {{ if $image }}
-                                {{ $thumb := $image.Resize "120x webp" }}
-                                <img src="{{ $thumb.Permalink }}" alt="{{ .Title }}" loading="lazy" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}">
-                            {{ end }}
-                            <div class="widget-recent-post-content">
-                                <a href="{{ .Permalink }}" class="widget-recent-post-title">{{ .Title }}</a>
-                                <span class="widget-recent-post-date">{{ .Date.Format "Jan 02, 2006" }}</span>
-                            </div>
-                        </div>
                     {{ end }}
                 </div>
+            </div>
+            {{ end }}
+        </div>
 
-                <!-- Tags Cloud Widget -->
-                <div class="widget">
-                    <div class="widget-title">Explore Topics</div>
-                    <div class="widget-tags">
-                        {{ range first 20 .Site.Taxonomies.tags.ByCount }}
-                        <a href="{{ .Page.Permalink }}" class="tag-pill">{{ .Page.Title }} <span class="tag-count">{{ .Count }}</span></a>
-                        {{ end }}
-                    </div>
-                </div>
-
-                <!-- Subscribe Widget -->
-                <div class="widget subscribe-widget">
-                    <div class="widget-title">Subscribe</div>
-                    <p class="subscribe-desc">Get the latest updates delivered directly to your inbox.</p>
-                    <a href="{{ "/index.xml" | absURL }}" class="subscribe-btn" target="_blank" rel="noopener">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 11a9 9 0 0 1 9 9"></path>
-                            <path d="M4 4a16 16 0 0 1 16 16"></path>
-                            <circle cx="5" cy="19" r="1"></circle>
-                        </svg>
-                        Join Newsletter
-                    </a>
-                </div>
-            </aside>
+        <!-- Pagination -->
+        {{ partial "pagination.html" . }}
+    </main>
+    
+    <div id="persistent-sidebar" data-turbo-permanent>
+        {{ partial "sidebar.html" . }}
+    </div>
 </div>
 {{ end }}
