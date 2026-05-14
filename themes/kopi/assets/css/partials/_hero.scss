@@ -285,6 +285,7 @@
     border-radius: var(--radius-container);
     margin-bottom: 2rem;
     background-color: #0a0a0f;
+    cursor: pointer;
 }
 
 .hero-banner-bg {
@@ -348,4 +349,22 @@
     .hero-banner-subtitle {
         font-size: 1.2rem;
     }
+}
+
+/* Hero banner hint */
+.hero-banner-hint {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.hero-banner:hover .hero-banner-hint {
+    opacity: 0.6;
 }

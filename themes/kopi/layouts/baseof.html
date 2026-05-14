@@ -29,7 +29,6 @@
         function enterSite() {
             welcome.classList.add('hidden');
             sessionStorage.setItem('hasSeenWelcome', 'true');
-            // Scroll past the banner to the timeline
             const banner = document.getElementById('heroBanner');
             if (banner) {
                 setTimeout(() => {
@@ -37,6 +36,12 @@
                     window.scrollTo({ top: bannerHeight + 10, behavior: 'smooth' });
                 }, 400);
             }
+        }
+        
+        function showWelcome() {
+            welcome.classList.remove('hidden');
+            sessionStorage.removeItem('hasSeenWelcome');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         const welcomeEnter = document.getElementById('welcomeEnter');
@@ -51,6 +56,15 @@
         window.addEventListener('keydown', function(e) {
             if ((e.key === 'Enter' || e.key === ' ') && !welcome.classList.contains('hidden')) enterSite();
         });
+        
+        // Click hero banner to return to welcome
+        const heroBanner = document.getElementById('heroBanner');
+        if (heroBanner) {
+            heroBanner.addEventListener('click', function() {
+                if (!welcome.classList.contains('hidden')) return;
+                showWelcome();
+            });
+        }
     })();
     </script>
     {{ end }}
