@@ -44,3 +44,9 @@ git add -A && git commit -m "update" && git push origin main  # 推送到 GitHub
 - 解锁时弹出 Toast 通知
 - JS: `themes/kopi/assets/js/modules/achievements.js`
 - 样式: `_widgets.scss` / `_components.scss`
+
+## 搜索功能修复 (2026-05-15)
+- **问题**：搜索框无法工作
+- **原因**：Hugo 在主题的 `layouts/page/` 子目录中无法正确识别特定布局的模板
+- **解决方案**：将 `themes/kopi/layouts/page/search.html` 复制到 `layouts/_default/search.html`
+- 搜索功能使用 Web Worker + index.json 索引，支持实时搜索和模糊匹配
